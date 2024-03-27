@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un Fleuriste</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("ajout.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            max-width: 400px;
+            width: 80%;
+            padding: 20px;
+            background-color: rgba(214, 214, 200, 0.87);
+            border-radius: 10px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #09350c;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            display: none;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 1em;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <!-- Affichage des informations existantes -->
+        <h2>Modifier un Fleuriste</h2>
+        <label>ID:</label>
+        <input type="text" [(ngModel)]="fleuriste.id" disabled><br>
+        <label>Nom:</label>
+        <input type="text" [(ngModel)]="fleuriste.nom" required><br>
+        <label>Gouvernorat:</label>
+        <select [(ngModel)]="fleuriste.lieu" required>
+            <option value="Ariana">Ariana</option>
+            <option value="Tunis">Tunis</option>
+            <option value="Ben arous">Ben arous</option>
+            <option value="Sfax">Sfax</option>
+            <option value="Nabeul">Nabeul</option>
+            <option value="Sousse">Sousse</option>
+            <option value="Monastir">Monastir</option>
+        </select><br>
+        <label>Avis:</label>
+        <input type="number" [(ngModel)]="fleuriste.avis" min="0" max="5" step="0.1" required><br>
+        <label>Prix Moyen:</label>
+        <input type="number" [(ngModel)]="fleuriste.prixMoyen" required><br>
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="fleuriste.email"><br>
+        <label>Numéro de Téléphone:</label>
+        <input type="tel" [(ngModel)]="fleuriste.numeroTelephone" pattern="[0-9]{8}" maxlength="8" required><br>
+
+        <label>Services:</label><br>
+        <input type="checkbox" id="decoration" value="Décoration" [(ngModel)]="fleuriste.services.decoration">
+        <label for="decoration">Décoration</label><br>
+        <input type="checkbox" id="fleurs" value="Fleurs" [(ngModel)]="fleuriste.services.fleurs">
+        <label for="fleurs">Fleurs pour mariée</label><br>
+        <input type="checkbox" id="organisation" value="Organisation" [(ngModel)]="fleuriste.services.organisation">
+        <label for="organisation">Organisation</label><br>
+        
+        <input type="file" (change)="onFileSelected($event)" accept=".jpg"><br>
+        <!-- Boutons de soumission et d'annulation -->
+        <button type="submit" (click)="modifierFleuriste()">Modifier</button>
+        <button type="button" (click)="annuler()">Annuler</button>
+    </form>
+</body>
+
+</html>
+

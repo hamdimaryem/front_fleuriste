@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supprimer un Fleuriste</title>
+  <style>
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("supprime.jpg"); 
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      max-width: 400px;
+      width: 80%;
+      padding: 20px;
+      background-color: rgba(214, 214, 200, 0.87);
+      border-radius: 10px;
+    }
+
+    input[type="text"],
+    select,
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #09350c;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .error-message {
+      color: #09350c;
+      font-size: 0.8em;
+      display: none;
+    }
+
+    .success-message {
+      color: green;
+      font-size: 1em;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <input type="text" placeholder="ID du Fleuriste" [(ngModel)]="idSuppression" min="0" required>
+    <input type="text" placeholder="Nom du Fleuriste" [(ngModel)]="nomSuppression" required>
+    <button type="button" (click)="supprimerFleuriste()">Supprimer</button>
+    <button (click)="request()">annuler</button>
+  </form>
+</body>
+
+</html>
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface Principale</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('interface.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh; 
+    }
+
+    .main-container {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 50px auto;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .message {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #000000; /* Couleur du texte */
+   text-align: center;
+}
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .action-button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      background-color: #09350c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .action-button:hover {
+      background-color: #09350c;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h1 class="title">HELLO ADMIN</h1>
+    <p class="message">Tu as l'accès pour ajouter, modifier ou supprimer un prestataire selon votre choix.</p>
+    <div class="button-container">
+      <button class="action-button" onclick="navigateTo('supprimer')">Supprimer</button>
+      <button class="action-button" onclick="navigateTo('ajouter')">Ajouter</button>
+      <button class="action-button" onclick="navigateTo('modifier')">Modifier</button>
+    </div>
+  </div>
+
+  <script>
+    function navigateTo(route) {
+      if (route === 'supprimer') {
+        window.location.href = 'supprime_fleuriste.html'; // Redirection vers l'interface de suppression
+      } else if (route === 'ajouter') {
+        window.location.href = 'ajout_fleuriste.html'; // Redirection vers l'interface fleuriste
+      } else if (route === 'modifier') { // Corrected spelling to 'modifier'
+      window.location.href = 'modif_fleuriste.html'; // Redirection vers l'interface modifier
+    } else {
+      console.log("Redirection vers " + route);
+    }
+      }
+    
+  </script>
+</body>
+</html>
+
