@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { InterfaceComponent } from './interface.component'; // Importez votre service InterfaceComponent
-
+import { InterfaceComponent } from './interface.component'; 
+import { HttpClient } from '@angular/common/http'; 
 @Component({
   selector: 'app-modifier2',
   templateUrl: './modifier2.component.html',
@@ -8,31 +8,19 @@ import { InterfaceComponent } from './interface.component'; // Importez votre se
 })
 export class Modifier2Component {
 
-  constructor(private interfaceService: InterfaceComponent) { } // Injectez votre service InterfaceComponent
-  modifierFleuriste() {
-    // Supposons que vous avez les détails du fleuriste à mettre à jour dans une variable appelée fleuristeToUpdate
-    const fleuristeToUpdate = {
-      // Propriétés du fleuriste à mettre à jour
-      nom: 'Nouveau Nom',
-      lieu: 'Nouveau Lieu',
-      avis: 4.5,
-      prixMoyen: 30,
-      email: 'nouveau@email.com',
-      numeroTelephone: '12345678',
-      services: ['Décoration', 'Fleurs'],
-      // Autres propriétés du fleuriste...
-    };
-  
-    // Appelez votre service pour mettre à jour les informations du fleuriste
-    this.interfaceService.updateFleuriste(fleuristeToUpdate).subscribe(
-      (data) => {
-        console.log('Informations du fleuriste mises à jour :', data);
-        // Gérez la réponse de votre service, par exemple, affichez un message de réussite
-      },
-      (error) => {
-        console.error('Erreur lors de la mise à jour des informations du fleuriste :', error);
-        // Gérez les erreurs, par exemple, affichez un message d'erreur à l'utilisateur
-      }
-    );
-  }
+  constructor(private router: Router, private http: HttpClient) { } 
+
+updateFleuriste(fleuristeData: any) {
+  // Effectuez une requête POST pour mettre à jour les détails du fleuriste
+  this.http.post<any>('/api/fleuriste/modifier2', fleuristeData).subscribe(
+    (data) => {
+      console.log('Détails du fleuriste mis à jour avec succès :', data);
+      // Traitez la réponse de la requête, par exemple, affichez un message de succès
+    },
+    (error) => {
+      console.error('Erreur lors de la mise à jour des détails du fleuriste :', error);
+      // Gérez les erreurs, par exemple, affichez un message d'erreur à l'utilisateur
+    }
+  );
+}
 }

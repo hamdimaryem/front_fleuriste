@@ -69,8 +69,8 @@
 
 <body>
     <form>
-        <input type="text" placeholder="Saisie ID" [(ngModel)]="id" required>
-        <input type="text" placeholder="Nom" [(ngModel)]="nom" required>
+        <input type="text" placeholder="Saisie ID" [(ngModel)]="id" id="id_fleuriste" required>
+        <input type="text" id="nom" placeholder="Nom" [(ngModel)]="nom" required>
         <select id="lieu" [(ngModel)]="lieu" required>
             <option value="" disabled selected>Choisir le gouvernorat</option>
             <option value="Ariana">Ariana</option>
@@ -81,11 +81,11 @@
             <option value="Sousse">Sousse</option>
             <option value="Monastir">Monastir</option>
         </select>
-        <input type="number" placeholder="Avis" [(ngModel)]="avis" min="0" max="5" step="0.1" required>
+        <input type="number" id="avis" placeholder="Avis" [(ngModel)]="avis" min="0" max="5" step="0.1" required>
         <span class="error-message" *ngIf="avis !== '' && (avis < 0 || avis > 5)">L'avis doit être entre 0 et 5.</span>
-        <input type="number" placeholder="Prix Moyen" [(ngModel)]="prixMoyen" required>
-        <input type="email" placeholder="Email" [(ngModel)]="email">
-        <input type="tel" placeholder="Numéro de Téléphone" [(ngModel)]="numeroTelephone" pattern="[0-9]{8}" maxlength="8" required>
+        <input type="number" id="prix"placeholder="Prix Moyen" [(ngModel)]="prixMoyen" required>
+        <input type="email" id="mail" placeholder="Email" [(ngModel)]="email">
+        <input type="tel" id="num_tel" placeholder="Numéro de Téléphone" [(ngModel)]="numeroTelephone" pattern="[0-9]{8}" maxlength="8" required>
         <span class="error-message" *ngIf="numeroTelephone !== '' && formGroup.get('numeroTelephone').errors?.pattern">
             Numéro de téléphone invalide (8 chiffres requis).
         </span>
@@ -104,7 +104,7 @@
             <label for="organisation">Organisation</label>
         </div>
         <!-- Ajoutez d'autres cases à cocher pour d'autres services si nécessaire -->
-        <input type="file" (change)="onFileSelected($event)" accept=".jpg" required>
+        <!--<input type="file" (change)="onFileSelected($event)" accept=".jpg" required>-->
         <button (click)="ajouterEtRediriger()">Confirmer</button>
         <button (click)="request()">annuler</button>
     </form>

@@ -69,8 +69,8 @@
 
 <body>
   <form>
-    <input type="text" placeholder="ID du Fleuriste" [(ngModel)]="idSuppression" min="0" required>
-    <input type="text" placeholder="Nom du Fleuriste" [(ngModel)]="nomSuppression" required>
+    <input type="text"id="id_fleuriste" placeholder="ID du Fleuriste" [(ngModel)]="idSuppression" min="0" required>
+    <!--<input type="text" placeholder="Nom du Fleuriste" [(ngModel)]="nomSuppression" required>-->
     <button type="button" (click)="supprimerFleuriste()">Supprimer</button>
     <button (click)="request()">annuler</button>
   </form>

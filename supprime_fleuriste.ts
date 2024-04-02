@@ -9,7 +9,7 @@ interface Fleuriste {
   email: string;
   numeroTelephone: string;
   services: string[];
-  image: File;
+  //image: File;
 }
 
 @Component({
@@ -20,23 +20,26 @@ interface Fleuriste {
 export class FleuristeComponent {
   fleuristes: Fleuriste[] = [];
   idSuppression: number;
-  nomSuppression: string;
+  
 
-  constructor() { }
+constructor(private http: HttpClient) {}
 
-  supprimerFleuriste() {
-    const index =-1;
-    const index = this.fleuristes.findIndex(f => f.id === this.idSuppression && f.nom === this.nomSuppression);
-    if (index !== -1) {
-      this.fleuristes.splice(index, 1);
-      alert("Fleuriste supprimé avec succès.");
-      this.idSuppression = null;
-      this.nomSuppression = '';
-    } else {
-      alert("Fleuriste non trouvé. Vérifiez l'ID et le nom.");
-    }
-  }
-  request() {
-    console.log("Request button clicked");
+ 
+supprimerFleuriste() {
+  if (this.idSuppression ) {
+    this.http.delete(`/api/fleuristes/${this.idSuppression}`).subscribe(
+      () => {
+        alert("Fleuriste supprimé avec succès.");
+        this.idSuppression = null;
+        
+      },
+      (error) => {
+        console.error("Erreur lors de la suppression du fleuriste :", error);
+        alert("Une erreur s'est produite lors de la suppression du fleuriste.");
+      }
+    );
+  } else {
+    alert("Veuillez spécifier l'ID et le nom du fleuriste à supprimer.");
   }
 }
+

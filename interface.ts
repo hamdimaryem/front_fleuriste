@@ -30,31 +30,4 @@ export class InterfaceComponent {
         break;
     }
   }
-  getFleuristeToModify() {
-    // Effectuez une requête GET pour récupérer les détails du fleuriste à modifier
-    this.http.get<any>('/api/fleuriste/modifier2').subscribe(
-      (data) => {
-        console.log('Détails du fleuriste récupérés avec succès :', data);
-        // Traitez les données récupérées, par exemple, affectez-les à une variable pour les afficher dans l'interface
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des détails du fleuriste à modifier :', error);
-        // Gérez les erreurs, par exemple, affichez un message d'erreur à l'utilisateur
-      }
-    );
-  }
-
-  updateFleuriste(fleuristeData: any) {
-    // Effectuez une requête POST pour mettre à jour les détails du fleuriste
-    this.http.post<any>('/api/fleuriste/modifier2', fleuristeData).subscribe(
-      (data) => {
-        console.log('Détails du fleuriste mis à jour avec succès :', data);
-        // Traitez la réponse de la requête, par exemple, affichez un message de succès
-      },
-      (error) => {
-        console.error('Erreur lors de la mise à jour des détails du fleuriste :', error);
-        // Gérez les erreurs, par exemple, affichez un message d'erreur à l'utilisateur
-      }
-    );
-  }
-}
+ 
